@@ -16,6 +16,7 @@
 #import <NMapsMap/NMFOverlayImage.h>
 
 #import "RCTConvert+NMFMapView.h"
+#import "RNNaverMapCaption.h"
 
 @implementation RNNaverMapMarker {
   RCTImageLoaderCancellationBlock _reloadImageCancellationBlock;
@@ -69,6 +70,12 @@
 - (void)setAnchor:(CGPoint)anchor {
   _anchor = anchor;
   _realMarker.anchor = anchor;
+}
+
+- (void)setCaption:(RNNaverMapCaption*)caption {
+  _realMarker.captionText = caption.text;
+  _realMarker.captionTextSize = caption.textSize;
+  _realMarker.captionColor = caption.color;
 }
 
 - (void)setMapView:(NMFMapView*) mapView {

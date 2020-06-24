@@ -31,5 +31,6 @@ RCT_EXPORT_VIEW_PROPERTY(image, NSString)
 RCT_EXPORT_VIEW_PROPERTY(pinColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(anchor, CGPoint)
 RCT_EXPORT_VIEW_PROPERTY(onClick, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(caption, RNNaverMapCaption)
 
 @end

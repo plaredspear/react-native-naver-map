@@ -9,10 +9,13 @@
 
 #import <NMapsMap/NMFMapView.h>
 
+#import "RNNaverMapCaption.h"
+
 @interface RCTConvert(NMFMapView)
 
 + (NMFCameraUpdate *) NMFCameraUpdate: (id) json;
 + (NMGLatLng *) NMGLatLng: (id)json;
 + (NMGLatLngBounds *) NMGLatLngBounds: (id)json;
++ (RNNaverMapCaption *) RNNaverMapCaption: (id)json;
 
 @end
