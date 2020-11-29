@@ -2,6 +2,7 @@ import React, {Component, SyntheticEvent} from 'react';
 import {findNodeHandle, Image, ImageSourcePropType, NativeModules, Platform, processColor, requireNativeComponent, StyleProp, UIManager, ViewStyle,} from 'react-native';
 
 const RNNaverMapView = requireNativeComponent('RNNaverMapView');
+// @ts-ignore
 const RNNaverMapViewTexture = Platform.select({
     android: () => requireNativeComponent('RNNaverMapViewTexture'),
     ios: () => RNNaverMapView
@@ -152,9 +153,11 @@ export default class NaverMapView extends Component<NaverMapViewProps> {
     };
 
     private dispatchViewManagerCommand = (command: string, arg: any) => {
+        // @ts-ignore
         return Platform.select({
             // @ts-ignore
             android: () => UIManager.dispatchViewManagerCommand(
+                // @ts-ignore
                 this.nodeHandle,
                 // @ts-ignore
                 UIManager.getViewManagerConfig('RNNaverMapView').Commands[command],
@@ -292,6 +295,7 @@ interface PolygonProps extends Omit<MapOverlay, "coordinate"> {
 
 export class Polygon extends Component<PolygonProps> {
     render() {
+        // @ts-ignore
         return Platform.select({
             android: () => <RNNaverMapPolygonOverlay {...this.props} />,
             ios: () => <RNNaverMapPolygonOverlay
