@@ -150,6 +150,14 @@ interface NaverMapViewProps {
         latitude: number;
         longitude: number;
         zoom: number;
+        lt0: number;
+        lt1: number;
+        rt0: number;
+        rt1: number;
+        rb0: number;
+        rb1: number;
+        lb0: number;
+        lb1: number;
     }) => void;
     onMapClick?: (event: {
         x: number;
@@ -190,6 +198,14 @@ handleOnCameraChange: (event: React.SyntheticEvent<{}, {
     latitude: number;
     longitude: number;
     zoom: number;
+    lt0: number;
+    lt1: number;
+    rt0: number;
+    rt1: number;
+    rb0: number;
+    rb1: number;
+    lb0: number;
+    lb1: number;
 }>) => void;
 handleOnMapClick: (event: React.SyntheticEvent<{}, {
     x: number;
