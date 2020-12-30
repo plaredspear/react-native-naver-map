@@ -48,7 +48,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-        url 'https://navercorp.bintray.com/maps'
+        url 'https://naver.jfrog.io/artifactory/maven/'
     }
 }
 

@@ -3,8 +3,6 @@ package com.github.quadflask.react.navermap;
 import android.graphics.PointF;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -18,6 +16,8 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 public class RNNaverMapView extends MapView implements OnMapReadyCallback, NaverMap.OnCameraIdleListener, NaverMap.OnMapClickListener, RNNaverMapViewProps {
     private ThemedReactContext themedReactContext;
@@ -272,6 +272,16 @@ public class RNNaverMapView extends MapView implements OnMapReadyCallback, Naver
         param.putDouble("latitude", cameraPosition.target.latitude);
         param.putDouble("longitude", cameraPosition.target.longitude);
         param.putDouble("zoom", cameraPosition.zoom);
+
+        LatLngBounds coveringBounds = naverMap.getCoveringBounds();
+        param.putDouble("lt0", coveringBounds.getNorthWest().latitude);
+        param.putDouble("lt1", coveringBounds.getNorthWest().longitude);
+        param.putDouble("rt0", coveringBounds.getNorthEast().latitude);
+        param.putDouble("rt1", coveringBounds.getNorthEast().longitude);
+        param.putDouble("rb0", coveringBounds.getSouthEast().latitude);
+        param.putDouble("rb1", coveringBounds.getSouthEast().longitude);
+        param.putDouble("lb0", coveringBounds.getSouthWest().latitude);
+        param.putDouble("lb1", coveringBounds.getSouthWest().longitude);
 
         emitEvent("onCameraChange", param);
     }
