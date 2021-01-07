@@ -221,6 +221,7 @@ interface MarkerProps {
     coordinate: Coord
     anchor?: { x: number, y: number }
     pinColor?: string
+    alpha?: number
     rotation?: number
     flat?: boolean
     image?: ImageSourcePropType
