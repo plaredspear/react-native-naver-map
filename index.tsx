@@ -239,6 +239,7 @@ export interface MapOverlay {
 export interface MarkerProps extends MapOverlay {
     anchor?: { x: number; y: number };
     pinColor?: string;
+    alpha?: number;
     rotation?: number;
     flat?: boolean;
     image?: ImageSourcePropType;
