@@ -3,7 +3,7 @@ package com.github.quadflask.react.navermap;
 import android.view.Choreographer;
 import android.view.View;
 import android.widget.FrameLayout;
-import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.naver.maps.geometry.LatLng;
@@ -11,6 +11,8 @@ import com.naver.maps.geometry.LatLngBounds;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.NaverMapOptions;
 import com.naver.maps.map.util.FusedLocationSource;
+
+import androidx.annotation.NonNull;
 
 public class RNNaverMapViewContainer extends FrameLayout implements RNNaverMapViewProps {
     private final ReactApplicationContext appContext;
@@ -242,6 +244,12 @@ public class RNNaverMapViewContainer extends FrameLayout implements RNNaverMapVi
     public void moveCameraFitBound(LatLngBounds bounds, int left, int top, int right, int bottom) {
         if (mapView != null)
             mapView.moveCameraFitBound(bounds, left, top, right, bottom);
+    }
+
+    @Override
+    public void scrollToAndZoom(LatLng latLng, float zoom) {
+        if (mapView != null)
+            mapView.scrollToAndZoom(latLng, zoom);
     }
 
     @Override
