@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import NaverMapView, {Circle, Marker, Path, Polyline, Polygon, Align} from "./map";
 import {PermissionsAndroid, Platform, Text, TouchableOpacity, View} from "react-native";
 import {NavigationContainer} from '@react-navigation/native';
@@ -38,15 +38,24 @@ const MapViewScreen = ({navigation}) => {
         requestLocationPermission();
     }, []);
 
+    const mapView = useRef(null);
+
     return <>
-        <NaverMapView style={{width: '100%', height: '100%'}}
+        <NaverMapView ref={mapView}
+                      style={{width: '100%', height: '100%'}}
                       showsMyLocationButton={true}
                       center={{...P0, zoom: 16}}
                       onTouch={e => console.warn('onTouch', JSON.stringify(e.nativeEvent))}
                       onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
                       onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
                       useTextureView>
-            <Marker coordinate={P0} onClick={() => console.warn('onClick! p0')} caption={{text: "test caption", align: Align.Left}}/>
+            <Marker coordinate={P0}
+                onClick={() => {
+                    console.warn('onClick! p0')
+                    mapView.current.animateToPosition(P0, 11);
+                }}
+                caption={{ text: "test caption", align: Align.Left }}
+            />
             <Marker coordinate={P1} pinColor="blue" onClick={() => console.warn('onClick! p1')}/>
             <Marker coordinate={P2} pinColor="red" alpha={0.5} onClick={() => console.warn('onClick! p2')}/>
             <Marker coordinate={P4} onClick={() => console.warn('onClick! p4')} image={require("./marker.png")} width={48} height={48}/>
