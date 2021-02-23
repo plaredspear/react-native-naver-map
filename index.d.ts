@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, SyntheticEvent } from 'react';
 import { ImageSourcePropType, StyleProp, ViewStyle } from 'react-native';
 declare const RNNaverMapView: any;
 export interface Coord {
@@ -127,7 +127,7 @@ export default class NaverMapView extends Component<NaverMapViewProps> {
     setLocationTrackingMode: (mode: number) => void;
     showsMyLocationButton: (show: boolean) => void;
     private dispatchViewManagerCommand;
-    handleOnCameraChange: (event: React.SyntheticEvent<{}, {
+    handleOnCameraChange: (event: SyntheticEvent<{}, {
         latitude: number;
         longitude: number;
         zoom: number;
@@ -140,7 +140,7 @@ export default class NaverMapView extends Component<NaverMapViewProps> {
         lb0: number;
         lb1: number;
     }>) => void;
-    handleOnMapClick: (event: React.SyntheticEvent<{}, {
+    handleOnMapClick: (event: SyntheticEvent<{}, {
         x: number;
         y: number;
         latitude: number;
@@ -166,7 +166,6 @@ export interface MarkerProps extends MapOverlay {
     image?: ImageSourcePropType;
     width?: number;
     height?: number;
-    alpha?: number;
     animated?: boolean;
     caption?: {
         text?: string;

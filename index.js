@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { findNodeHandle, Image, NativeModules, Platform, processColor, requireNativeComponent, UIManager, } from 'react-native';
 const RNNaverMapView = requireNativeComponent('RNNaverMapView');
+// @ts-ignore
 const RNNaverMapViewTexture = Platform.select({
     android: () => requireNativeComponent('RNNaverMapViewTexture'),
     ios: () => RNNaverMapView
@@ -90,9 +91,12 @@ export default class NaverMapView extends Component {
             this.dispatchViewManagerCommand('showsMyLocationButton', [show]);
         };
         this.dispatchViewManagerCommand = (command, arg) => {
+            // @ts-ignore
             return Platform.select({
                 // @ts-ignore
-                android: () => UIManager.dispatchViewManagerCommand(this.nodeHandle, 
+                android: () => UIManager.dispatchViewManagerCommand(
+                // @ts-ignore
+                this.nodeHandle,
                 // @ts-ignore
                 UIManager.getViewManagerConfig('RNNaverMapView').Commands[command], arg),
                 ios: () => NativeModules[`RNNaverMapView`][command](this.nodeHandle, ...arg),
@@ -125,14 +129,13 @@ export class Polyline extends Component {
 }
 export class Polygon extends Component {
     render() {
+        // @ts-ignore
         return Platform.select({
             android: () => React.createElement(RNNaverMapPolygonOverlay, Object.assign({}, this.props)),
-            ios: () => React.createElement(RNNaverMapPolygonOverlay, Object.assign({}, this.props, {
-                coordinates: {
+            ios: () => React.createElement(RNNaverMapPolygonOverlay, Object.assign({}, this.props, { coordinates: {
                     exteriorRing: this.props.coordinates,
                     interiorRings: this.props.holes,
-                }
-            })),
+                } }))
         })();
     }
 }
