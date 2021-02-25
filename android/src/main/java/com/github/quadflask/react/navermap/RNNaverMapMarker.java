@@ -38,9 +38,9 @@ import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.overlay.Align;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.OverlayImage;
-import com.naver.maps.map.overlay.Align;
 
 public class RNNaverMapMarker extends ClickableRNNaverMapFeature<Marker> implements TrackableView {
     private final DraweeHolder<GenericDraweeHierarchy> imageHolder;
@@ -118,6 +118,10 @@ public class RNNaverMapMarker extends ClickableRNNaverMapFeature<Marker> impleme
 
     public void setAlpha(float alpha) {
         feature.setAlpha(alpha);
+    }
+
+    public void setZIndex(int zIndex) {
+        feature.setZIndex(zIndex);
     }
 
     public void setAnchor(float x, float y) {
