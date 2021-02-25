@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UIColor *pinColor;
 @property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, assign) CGPoint anchor;
+@property (nonatomic, assign) CGPoint zIndex;
 @property (nonatomic, copy) RCTDirectEventBlock onClick;
 
 - (void)setCaptionText:(NSString *) text;

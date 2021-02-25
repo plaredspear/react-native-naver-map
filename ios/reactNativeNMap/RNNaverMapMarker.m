@@ -70,6 +70,10 @@
   _realMarker.alpha = alpha;
 }
 
+- (void)setZIndex:(NSInteger)zIndex {
+  _realMarker.zIndex = zIndex;
+}
+
 - (void)setAnchor:(CGPoint)anchor {
   _anchor = anchor;
   _realMarker.anchor = anchor;
