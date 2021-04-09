@@ -53,7 +53,7 @@ const MapViewScreen = ({navigation}) => {
             <Marker coordinate={P0}
                 onClick={() => {
                     console.warn('onClick! p0')
-                    mapView.current.animateToPosition(P0, 11);
+                    mapView.current.animateToPosition(P0, 15);
                 }}
                 caption={{ text: "test caption", align: Align.Left }}
             />
